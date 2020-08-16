@@ -1,0 +1,46 @@
+{% extends 'bank_register/base.html' %}
+
+{% block content %}
+
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Nome</td>
+            <td>CPF</td>
+            <td>COD</td>
+            <td>AG</td>
+            <td>CC</td>
+            <td>
+                <a href="{% url 'bank_insert' %}" class="btn btn-outline-success">
+                    <i class="fas fa-plus"></i>Adicionar
+                </a>
+            </td>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for bank in bank_list %}
+            <tr>
+                <td>{{bank.fullname}}</td>
+                <td>{{bank.cpf}}</td>
+                <td>{{bank.cod}}</td>
+                <td>{{bank.ag}}</td>
+                <td>{{bank.cc}}</td>
+                <td>
+                    <a href="{% url 'bank_update' bank.id %}" class="btn text-secondary px-0">
+                        <i class="far fa-edit fa-lg"></i>
+                    </a>
+                    <form action="{% url 'bank_delete' bank.id %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn">
+                            <i class="far fa-trash-alt fa lg text-danger float-right"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content%}
+

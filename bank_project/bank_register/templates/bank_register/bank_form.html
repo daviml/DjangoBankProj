@@ -1,0 +1,37 @@
+{% extends 'bank_register/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md">
+            {{form.fullname|as_crispy_field}}
+        </div>
+        <div class="col-md">
+            {{form.cpf|as_crispy_field}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            {{form.cod|as_crispy_field}}
+        </div>
+        <div class="col-md">
+            {{form.ag|as_crispy_field}}
+        </div>
+        <div class="col-md">
+            {{form.cc|as_crispy_field}}
+        </div>
+    </div>
+        
+    <div class="float-right">
+            <button type="submit" class="btn btn-success btn-block ">Enviar</button>
+    </div>
+
+    
+
+    </form>
+{% endblock content%}
+
+
+
